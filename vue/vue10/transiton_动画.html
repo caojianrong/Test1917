@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/vue.js"></script>
+  <link rel="stylesheet" href="./animte.css">
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+ 
+  </style>
+</head>
+<body>
+  <div id='app'>
+    <transition
+      enter-active-class="slideInRight animated"
+      leave-active-class="slideOutRight animated"
+    >
+
+      <test v-show='show' key='1'></test>
+
+    </transition
+    >
+ 
+      <button @click='toggle'>toggle</button>
+  </div>
+
+  <script>
+  Vue.component('test',{
+    template:'<div class="test"></div>'
+  })
+    new Vue({
+      el:'#app',
+      data:{show:true},
+      methods: {
+        toggle(){
+          this.show=!this.show
+        }
+      },
+      
+    })
+  </script>
+<!-- 
+元素或者组件 进入 离开（页面） 可以触发动画效果 
+在目标元素的外侧用 transition 包裹 ，通过name 属性添加一个名字
+进入状态
+name-enter  name-enter-to  name-enter-active 
+离开状态把enter换成leave
+
+多个元素或者组件要用动画 需要使用transtion-group 里面的子元素要添加不同的key值
+
+ -->
+</body>
+</html>

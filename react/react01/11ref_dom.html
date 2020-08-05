@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Component = React.createClass({
+
+ 
+  render() {
+
+      return (
+        <div>
+         <img ref='hehe' src="sfsf" alt=""/>
+          <button onClick={()=>{
+             console.log(this.refs.hehe)
+          }}> toggle</button>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+使用方式1 通过ref 绑定dom  通过refs 获取相关的dom元素
+*/ 
+</script>
+</body>
+</html>

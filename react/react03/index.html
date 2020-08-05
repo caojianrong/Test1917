@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+ 
+ 
+//  function sayHello(){
+//    let name=localStorage.getItem('name')
+//    console.log('你好:',name)
+//  }
+
+//  function sayBye(){
+//    let name=localStorage.getItem('name')
+//    console.log('再见:',name)
+//  }
+
+//  sayHello()
+//  sayBye()
+  function sayBye(name){
+   
+    console.log('再见:',name)
+  }
+  function sayHello(name){
+    console.log('你好:',name)
+  }
+  function hof(fun){
+    return ()=>{
+      let name=localStorage.getItem('name')
+      fun(name)
+    }
+  }
+  hof(sayHello)()
+  hof(sayBye)()
+</script>
+</body>
+</html>

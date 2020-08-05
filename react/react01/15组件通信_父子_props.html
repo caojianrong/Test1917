@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+.red{
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Son = React.createClass({
+
+  render(){
+    return(
+      <div>
+        <h5>子组件</h5>
+        {!this.props.toggle||<div className='red'></div>}
+      </div>
+    )
+  }
+})
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      show:true
+    }
+  },
+  
+  render() {
+      return (
+        <div>
+          <h1>这里是父组件</h1>
+          <button onClick={()=>{
+            this.setState({show:!this.state.show})
+          }}>toggle</button>
+          <Son toggle={this.state.show}></Son>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+父子通信 2 父组件控制子组件元素的渲染
+
+1.控制元素渲染的数据放在父组件上
+2.修改的方法放在父组件上
+3.通过props 将数据传递给子组件
+4.父组件调用自己的方法修改
+
+
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      num:1,
+      string:'呵呵',
+      arr:["呢",'he','sdf'],
+      obj:{us:123,ps:123},
+      null:null,
+      undef:undefined,
+      boolean:true
+    }
+  },
+
+  render() {
+      return (
+        <div>
+          <h1>数据绑定</h1>
+          {this.state.num}<br/>
+          {this.state.string}<br/>
+          {this.state.null?'a':'b'}<br/>
+          {this.state.undefined?'c':'d'}<br/>
+          {this.state.boolean?'真':'假'}<br/>
+          {this.state.obj.us}<br/>
+          {this.state.arr}
+          
+        </div>
+      )
+  },
+})
+ReactDOM.render(<Component/>,app)
+/*
+react 不允许直接将对象绑定在页面
+react 绑定数组到页面回将数组的每一项拆分
+*/ 
+</script>
+</body>
+</html>

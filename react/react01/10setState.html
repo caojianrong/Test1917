@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      num:1
+    }
+  },
+ 
+  render() {
+    console.log('渲染了')
+      return (
+        <div>
+          {this.state.num}
+          <button onClick={()=>{
+            // let  num = ++this.state.num
+            // console.log('top',this.state.num)
+            // this.setState({num:5},()=>{
+            //   console.log('赋值结束',this.state.num)
+            // })
+            // console.log('bottom',this.state.num)
+            setTimeout(()=>{
+              this.setState({num:2})
+              this.setState({num:3})
+              this.setState({num:4})
+              this.setState({num:5})
+            },1000)
+            
+          }}> toggle</button>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+setState 通知组件重新渲染一遍
+setState 是一个异步的函数
+参数1 表示要修改的数据 参数2是一个回调 当数据修改结束后执行
+1-2-3-4-1
+setState  同步中 修改数据不会直接更新页面 将同一个事件循环所有的setState 合并 更新一次页面
+setState 如果在异步中 每一次都会触发页面刷新
+*/ 
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Son= React.createClass({
+  componentWillReceiveProps(props){
+    console.log('props发生改变')
+    console.log('props',props)
+    console.log('this.porps',this.props)
+    // 监听props改变 也可以做网路请求  但是不用
+    // 16版本不安全 17废弃
+    
+  },
+  render(){
+    return(
+      <div>
+          <h1>子组件</h1>
+           {this.props.age}
+      </div>
+    )
+  }
+})
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      age:16
+    }
+  },
+  render(){
+    return (
+      <div>
+        <button onClick={()=>{
+          this.setState({age:18})
+        }}>change</button>
+        <Son age={this.state.age}></Son>
+      </div>
+    )
+  }
+})
+
+
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+
+</script>
+</body>
+</html>

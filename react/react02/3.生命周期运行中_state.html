@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+
+let Component = React.createClass({
+
+  getInitialState(){
+    console.log('初始化state值')
+    return{
+      age:16
+    }
+  },
+  shouldComponentUpdate(props,state){
+    
+     //可以控制render函数是否执行
+     //参数2 是改变后的sate值
+     // this.state 是修改前的state值
+     // 可以做效率优化  
+    // console.log('state改变')
+    // console.log('state',state)
+    // console.log('this.state',this.state)
+    if(this.state.age==state.age){
+
+      return false
+    }else{
+      return true
+    }
+  },
+  componentWillUpdate(){
+     console.log('更新之前')
+    //  16版本 不安全的 
+    //  17版本也是被废弃
+    //  console.log(this.state.age)
+    //  console.log(this.refs.hehe.innerText)
+  },
+  componentDidUpdate(){
+    // 可以监听数据的改变 
+    // 数据的更新操作 很容易引入死循环
+    //  this.setState({age:Math.random()})
+     console.log('更新之后')
+     console.log(this.state.age)
+     console.log(this.refs.hehe.innerText)
+  },
+  render(){
+    console.log('渲染')
+    return (
+      <div>
+        <button onClick={()=>{
+          this.setState({age:18})
+        }}>change</button>
+        <p ref='hehe'>hehe{this.state.age}</p>
+      </div>
+    )
+  }
+})
+
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+
+</script>
+</body>
+</html>

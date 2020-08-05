@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Component = React.createClass({
+  getInitialState(){
+    return{
+
+    }
+  },
+  test(num1,num2,event){
+    console.log('点到我了',num1,num2,event)
+  },
+  render() {
+      return (
+        <div>
+           {/*<button onClick={this.test.bind(this,1,2)} >add</button>*/}
+           <button onClick={(e)=>{
+             console.log(11)
+             this.test(1,2,e)
+           }}>add</button>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+方法一直接调用处理函数
+react 中的事件和原生类似 将原生事件使用变成驼峰命名法  onclick->onClick
+默认参数是事件对象
+传递参数不能写() 所以通过bind 进行传参 默认参数放到最后
+方法二 
+在事件的函数里 调用目标处理函数  
+注意 需要手动传递事件对象
+*/ 
+</script>
+</body>
+</html>

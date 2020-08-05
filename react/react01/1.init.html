@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+// 创建组件
+/*
+1.通过React crateClass 方法创建组件
+2. 配置项里固定有一个render函数
+3. render函数里要求return页面模板
+4. 组件也是一个虚拟dom
+*/ 
+let Component = React.createClass({
+  render(){
+    return (
+      <div>
+        <h1>hehe</h1>
+        <p>hehe</p>
+      </div>
+    )
+  }
+})
+
+// 将组件挂载到 app元素上 参数1 要挂载的组件 参数2 要挂载的元素
+// 组件名当成标签名使用  组件名必须大写
+ReactDOM.render(<Component/>,document.getElementById('app'))
+// ReactDOM.render(<Component/>,app)
+</script>
+</body>
+</html>

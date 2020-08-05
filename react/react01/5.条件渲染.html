@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      hide:true
+    }
+  },
+  renderDiv(){
+    console.log('渲染div')
+    if(this.state.hide){
+
+    }else{
+
+    return (<img src='dsfsf'/>)
+    }
+  },
+  render() {
+    console.log(this) //组件对象
+      return (
+        <div>
+          <h1>条件渲染</h1>
+          {/* {this.state.show?<div>div</div>:<p>p</p>} */} 
+          {/*{ this.state.hide||<div>div</div>}*/}
+          {this.renderDiv()}
+        </div>
+      )
+  },
+})
+ReactDOM.render(<Component hehe='李雷'/>,app)
+// 注释方式 {/*要注释的内容*/}
+// 控制一个元素的渲染 || 
+// 2个元素切换 三元表达式
+// 渲染的东西比较多 用函数
+</script>
+</body>
+</html>

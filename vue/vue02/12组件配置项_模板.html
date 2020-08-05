@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/vue.js"></script>
+  <style>
+
+  </style>
+</head>
+<body> 
+  <div id='app1'>
+     <hehe></hehe>
+  </div>
+  <hr>
+  <!-- 组件的模板 -->
+  <template id='tp1'>
+    <div class='tp1'>
+        好地方接口的是分类深度较
+        <div></div>
+    </div>
+  </template>
+  
+<script>
+
+// Vue.component('hehe',{
+//   template:'<h1>🙃</h1>'
+// })
+// 组件模板要求只能有一个跟元素
+Vue.component('hehe',{
+  template:'#tp1'
+})
+let  vm1=new Vue({
+  el:"#app1",
+  data:{
+     name:'实例1'
+  }
+
+})
+
+  
+</script>
+
+</body>
+</html>

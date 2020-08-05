@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Son = React.createClass({
+  
+  render(){
+    console.log(this)
+    return(
+      <div>
+        <h5>子组件:{this.props.children}</h5>
+      </div>
+    )
+  }
+})
+let Component = React.createClass({
+  render() {
+      return (
+        <div>
+          <h1>这里是父组件</h1>
+          <Son>
+            你买到票了没
+          </Son>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+组件标签中写的内容不会被渲染
+但是可以在组件内部通过 props.childer 获取使用
+*/
+</script>
+</body>
+</html>

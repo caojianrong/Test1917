@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Son = React.createClass({
+  sonfun(){
+    console.log('子组件的方法')
+  },
+  render(){
+    return(
+      <div>
+        <h5>子组件</h5>
+      </div>
+    )
+  }
+})
+let Component = React.createClass({
+  render() {
+
+      return (
+        <div>
+          <h1>这里是父组件</h1>
+          <button onClick={()=>{
+             console.log(this)
+             this.refs.son.sonfun()
+          }}> toggle</button>
+          <hr/>  
+          <Son ref='son'></Son>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+使用方式2 通过ref 绑定组件 
+可以获取组件对象 获取绑定组件的相关方法
+*/ 
+</script>
+</body>
+</html>

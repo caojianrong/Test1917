@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../base/react.min.js"></script>
+    <script src="../base/react-dom.min.js"></script>
+    <script src="../base/browser.min.js"></script>
+    <style>
+        tr,td{
+            border: 1px solid red;
+        }
+        .sel{
+            opacity: .5;
+        }
+        .blue{
+          background: blue;
+        }
+        .green{
+          background: green;
+        }
+        .pink{
+          background: pink;
+        }
+        .purple{
+          background: purple;
+        }
+    </style>
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <div id="app">
+
+    </div>
+   
+    <script type="text/babel">
+       
+        var CommentBoxComponent = React.createClass({  
+        /**/ 
+            getInitialState(){
+              return {
+                colors:[['blue','green'],['pink','purple']],
+                sel:0,
+                colorSel:0,
+                arr:[[1],
+                     [1,2],
+                     [1,2,3],
+                     [1,2,3,4],
+                     [1,2,3,4,5],
+                     [1,2,3,4,5,6],
+                     [1,2,3,4,5,6,7],
+                     [1,2,3,4,5,6,7,8],
+                     [1,2,3,4,5,6,7,8,9]]
+              }
+            },
+            renderTd(tds,trIndex){
+              let td=tds.map((item,index)=>{
+                return (<td>{item}*{trIndex+1}={item*(trIndex+1)}</td>)
+              })
+              return td
+            },
+            mouseover(index){
+              console.log('滑过',index)
+              this.setState({sel:index})
+            },
+            render:function () {
+               let {arr,sel,colors,colorSel} = this.state
+              //  解构赋值  方便数据的使用
+               return (
+                   <div>
+                   {/*下拉菜单修改触发change事件更改隔行样色*/}
+                    <select name="" id="" onChange={(e)=>{
+                        console.log(e.target.value)
+                        this.setState({colorSel:e.target.value})
+                    }}>
+                    {/*通过颜色数据循环option*/}
+                      {colors.map((item,index)=>{
+                        return(<option value={index}>{item}</option>)
+                      })}
+                      
+                    </select>
+                    <table >
+                    {/*创建表格  隔行变色 与滑过样式*/}
+                        {arr.map((item,trIndex)=>{
+                          return(
+                            <tr
+                            className={trIndex%2?colors[colorSel][0]:colors[colorSel][1]}
+                            style={ {opacity:trIndex==sel?0.5:1} }
+                            onMouseOver={this.mouseover.bind(this,trIndex)}
+                            >{this.renderTd(item,trIndex)}</tr>
+                          )
+                        })}
+                    </table>
+                   </div>
+               ) 
+            }
+        })
+
+        ReactDOM.render(<CommentBoxComponent/>,document.getElementById("app"))
+       
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+<style>
+.red{
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+</style>
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let Son1 = React.createClass({
+
+  render(){
+    return(
+      <div>
+        <h5>子组件1</h5>
+      {!this.props.show||<div className='red'></div>}
+      </div>
+    )
+  }
+})
+let Son2 = React.createClass({
+
+  render(){
+    return(
+      <div>
+        <h5>子组件2</h5>
+        <button onClick={()=>{
+          this.props.toggle()
+        }}>toggle</button>
+      </div>
+    )
+  }
+})
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      show:false
+    }
+  },
+  toggle(){
+    this.setState({show:!this.state.show})
+  },
+  render() {
+      return (
+        <div>
+          <h1>这里是父组件</h1>
+          
+          <Son1 show={this.state.show}></Son1>
+          <Son2 toggle={this.toggle}></Son2>
+        </div>
+      )
+  }
+})
+ReactDOM.render(<Component/>,app)
+/*
+亲兄弟通信 
+1.子元素控制另一个子元素的div显示
+2.控制变量放在父组件  
+3.控制变量的方法也在父组件上
+4.结合父子和子父通信
+*/
+</script>
+</body>
+</html>

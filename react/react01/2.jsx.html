@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <!-- 提供react对象 -->
+  <script src="../base/react-dom.min.js"></script>
+  <!-- 体统reactDOM对象 -->
+  <script src="../base/browser.min.js"></script>
+  <!-- 帮助浏览器解析jsx -->
+</head>
+<body>
+  <div id='app'>
+
+  </div>
+<script type='text/babel'>
+let  Hehe = React.createClass({
+  render() {
+    return(
+      <div id='test'>
+        <h1 class='red'>jsx语法（vue中的模板）</h1>
+        <hr/>
+        <p>123
+          <span>1</span>
+        </p>
+      </div>
+    ) 
+  }
+})
+/*
+React.createElement('div',{id:'test'},[
+  React.creatElement('h1',{class:'red',text:'jsx语法（vue中的模板）'},[])
+  React.createElenent('p',{text:123},[
+    React.craeteElement('span',{text:1})
+  ])
+])
+语法 糖  class 简化代码少写点 
+jsx  javascript xhtml 
+可以让我们在js里写html标签
+1.标签必须闭合
+2.必须有一个根元素
+正常的js代码不能直接写标签 jsx 也不行
+想使用需要将jsx的语法进行解析
+type='text/babel' 是告诉浏览器该标签的内部需要解析jsx
+*/ 
+ReactDOM.render(<Hehe/>,app)
+</script>
+</body>
+</html>
